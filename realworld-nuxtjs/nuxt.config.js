@@ -8,6 +8,7 @@
  */
 module.exports = {
   router: {
+    middleware: 'authenticated',
     linkActiveClass: 'active',
     extendRoutes(routes, resolve) {
       routes.length = 0
@@ -55,5 +56,9 @@ module.exports = {
         }
       ])
     }
-  }
+  },
+
+  plugins: [
+    '~/plugins/request'
+  ]
 }

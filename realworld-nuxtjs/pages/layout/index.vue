@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-19 15:02:03
- * @LastEditTime: 2021-01-20 15:25:27
+ * @LastEditTime: 2021-01-21 11:35:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \lagou3-3\fed-e-task-03-03\realworld-nuxtjs\pages\layout\index.vue
@@ -17,24 +17,29 @@
 						<!-- Add "active" class when you're on that page" -->
 						<nuxt-link class="nav-link" to="/" exact>Home</nuxt-link>
 					</li>
-					<li class="nav-item">
-						<nuxt-link class="nav-link" to="/editor"> <i class="ion-compose"></i>&nbsp;New Post </nuxt-link>
-					</li>
-					<li class="nav-item">
-						<nuxt-link class="nav-link" to="/settings"> <i class="ion-gear-a"></i>&nbsp;Settings </nuxt-link>
-					</li>
-					<li class="nav-item">
-						<nuxt-link class="nav-link" to="/login">Sign in</nuxt-link>
-					</li>
-					<li class="nav-item">
-						<nuxt-link class="nav-link" to="/register">Sign up</nuxt-link>
-					</li>
-					<li class="nav-item">
-						<nuxt-link class="nav-link" to="/profile/123">
-							<img class="user-pic" src="https://himg.bdimg.com/sys/portraitn/item/d5a0d2edb6afccec74696d65293b" />
-							jjh_1994
-						</nuxt-link>
-					</li>
+					<template v-if="user">
+						<li class="nav-item">
+							<nuxt-link class="nav-link" to="/editor"> <i class="ion-compose"></i>&nbsp;New Post </nuxt-link>
+						</li>
+						<li class="nav-item">
+							<nuxt-link class="nav-link" to="/settings"> <i class="ion-gear-a"></i>&nbsp;Settings </nuxt-link>
+						</li>
+						<li class="nav-item">
+							<nuxt-link class="nav-link" to="/profile/123">
+								<img class="user-pic" :src="user.image" />
+								{{user.username}}
+							</nuxt-link>
+						</li>
+					</template>
+					<template v-else>
+						<li class="nav-item">
+							<nuxt-link class="nav-link" to="/login">Sign in</nuxt-link>
+						</li>
+						<li class="nav-item">
+							<nuxt-link class="nav-link" to="/register">Sign up</nuxt-link>
+						</li>
+					</template>
+					
 				</ul>
 			</div>
 		</nav>
@@ -56,7 +61,16 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex'
 	export default {
 		name: 'LayoutIndex',
+
+		computed: {
+			...mapState(['user'])
+		},
+
+		mounted() {
+			console.log(this.user, '__++__+__+_+_+_+_+_+_+_+_');
+		}
 	}
 </script>

@@ -59,7 +59,8 @@
 	</div>
 </template>
 <script>
-	import { login, register } from '../../api/user'
+  import { login, register } from '../../api/user'
+  const Cookie = process.client ? require('js-cookie') : undefined
 
 	export default {
 		name: 'LoginIndex',
@@ -93,6 +94,9 @@
               })
           console.log(data);
           this.$store.commit('setUser', data.user)
+
+          Cookie.set('user', data.user)
+
 					this.$router.push('/')
 				} catch (error) {
 					this.errMsg = JSON.stringify(error.response.data.errors).replace(/{|}/g, '')
