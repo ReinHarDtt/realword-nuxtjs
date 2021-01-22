@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 14:27:31
- * @LastEditTime: 2021-01-22 13:54:06
+ * @LastEditTime: 2021-01-22 16:38:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \lagou3-3\fed-e-task-03-03\realworld-nuxtjs\nuxt.config.js
@@ -56,6 +56,11 @@ module.exports = {
         }
       ])
     }
+  },
+  
+  server: {
+    host: '0.0.0.0',
+    port: 3000
   },
 
   plugins: [
