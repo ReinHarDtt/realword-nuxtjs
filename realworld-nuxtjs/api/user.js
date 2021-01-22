@@ -46,3 +46,31 @@ export const getTags = () => {
     url: '/api/tags'
   })
 }
+
+export const favorite = (params) => {
+  return request({
+    method: 'POST',
+    url: `/api/articles/${params.slug}/favorite`
+  })
+}
+
+export const unFavorite = (params) => {
+  return request({
+    method: 'DELETE',
+    url: `/api/articles/${params.slug}/favorite`
+  })
+}
+
+export const getArticle = (params) => {
+  return request({
+    method: 'Get',
+    url: `/api/articles/${params.slug}`
+  })
+}
+
+export const getComments = (params) => {
+  return request({
+    method: 'Get',
+    url: `/api/articles/${params.slug}/comments`
+  })
+}

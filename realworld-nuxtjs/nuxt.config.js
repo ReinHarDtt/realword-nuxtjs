@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 14:27:31
- * @LastEditTime: 2021-01-20 15:24:22
+ * @LastEditTime: 2021-01-22 13:54:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \lagou3-3\fed-e-task-03-03\realworld-nuxtjs\nuxt.config.js
@@ -59,6 +59,7 @@ module.exports = {
   },
 
   plugins: [
-    '~/plugins/request'
+    '~/plugins/request.js',
+    '~/plugins/dayjs.js'
   ]
 }

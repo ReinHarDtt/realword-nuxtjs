@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-20 14:42:21
- * @LastEditTime: 2021-01-20 18:06:46
+ * @LastEditTime: 2021-01-22 11:25:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \lagou3-3\fed-e-task-03-03\realworld-nuxtjs\pages\login\index.vue
@@ -71,7 +71,8 @@
 					username: '',
 					email: '',
 					password: '',
-				},
+        },
+        
 				errMsg: '',
 			}
 		},

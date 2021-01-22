@@ -51,9 +51,9 @@
 								<nuxt-link class="author" :to="{ name: 'profile', params: { username: article.author.username } }">{{
 									article.author.username
 								}}</nuxt-link>
-								<span class="date">{{ article.createdAt }}</span>
+								<span class="date">{{ article.createdAt | date('MMM DD, YYYY') }}</span>
 							</div>
-							<button class="btn btn-outline-primary btn-sm pull-xs-right" :class="{ active: article.favorited }">
+							<button class="btn btn-sm pull-xs-right" :class="article.favorited ? 'btn-primary': 'btn-outline-primary'" @click="onFavorite(article)">
 								<i class="ion-heart"></i>{{ article.favoritesCount }}
 							</button>
 						</div>
@@ -93,7 +93,7 @@
 </template>
 
 <script>
-	import { getArticles, getTags, getFeedArticles } from '../../api/user'
+	import { getArticles, getTags, getFeedArticles, favorite, unFavorite } from '../../api/user'
 	import { mapState } from 'vuex'
 	export default {
 		name: 'HomeIndex',
@@ -128,6 +128,20 @@
 			totalPage() {
 				return Math.ceil(this.articlesCount / this.limit)
 			},
-		},
+    },
+    
+    methods: {
+      async onFavorite(article) {
+        if (article.favorited) {
+          await unFavorite({slug: article.slug})
+          article.favorited = false
+          --article.favoritesCount
+        } else {
+          await favorite({slug: article.slug})
+          article.favorited = true
+          ++article.favoritesCount
+        }
+      }
+    }
 	}
 </script>
